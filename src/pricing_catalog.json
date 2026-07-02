@@ -1,0 +1,97 @@
+{
+  "llm_models": [
+    { "name": "Claude 3.5 Sonnet", "provider": "Anthropic", "input_cost": 3.00, "output_cost": 15.00, "context_limit": 200000 },
+    { "name": "Claude 3 Opus", "provider": "Anthropic", "input_cost": 15.00, "output_cost": 75.00, "context_limit": 200000 },
+    { "name": "Claude 3.5 Haiku", "provider": "Anthropic", "input_cost": 1.00, "output_cost": 5.00, "context_limit": 200000 },
+    { "name": "GPT-4o", "provider": "OpenAI", "input_cost": 5.00, "output_cost": 15.00, "context_limit": 128000 },
+    { "name": "GPT-4o mini", "provider": "OpenAI", "input_cost": 0.15, "output_cost": 0.60, "context_limit": 128000 },
+    { "name": "Gemini 1.5 Pro", "provider": "Google", "input_cost": 3.50, "output_cost": 10.50, "context_limit": 2000000 },
+    { "name": "Gemini 1.5 Flash", "provider": "Google", "input_cost": 0.35, "output_cost": 1.05, "context_limit": 1000000 },
+    { "name": "Llama 3 70B (Groq)", "provider": "Groq", "input_cost": 0.59, "output_cost": 0.79, "context_limit": 8192 },
+    { "name": "Llama 3.1 405B (Together)", "provider": "Together AI", "input_cost": 5.00, "output_cost": 5.00, "context_limit": 128000 },
+    { "name": "DeepSeek Chat V3", "provider": "DeepSeek", "input_cost": 0.14, "output_cost": 0.28, "context_limit": 64000 },
+    { "name": "DeepSeek Coder V2", "provider": "DeepSeek", "input_cost": 0.14, "output_cost": 0.28, "context_limit": 32000 },
+    { "name": "Local Model (Self-Hosted)", "provider": "Local", "input_cost": 0.00, "output_cost": 0.00, "context_limit": 32000 }
+  ],
+  "embedding_models": [
+    { "name": "text-embedding-3-small", "provider": "OpenAI", "cost": 0.02, "dimensions": 1536 },
+    { "name": "text-embedding-3-large", "provider": "OpenAI", "cost": 0.13, "dimensions": 3072 },
+    { "name": "Voyage Multilingual", "provider": "Voyage AI", "cost": 0.12, "dimensions": 1024 },
+    { "name": "Cohere Embed V3", "provider": "Cohere", "cost": 0.10, "dimensions": 1024 },
+    { "name": "Titan Text V2", "provider": "AWS Bedrock", "cost": 0.02, "dimensions": 1024 },
+    { "name": "Local BGE-M3 (Self-Hosted)", "provider": "Local", "cost": 0.00, "dimensions": 1024 },
+    { "name": "Local Instructor-Large", "provider": "Local", "cost": 0.00, "dimensions": 768 }
+  ],
+  "reranker_models": [
+    { "name": "Cohere Rerank v3", "provider": "Cohere", "cost": 2.00 },
+    { "name": "Voyage Rerank", "provider": "Voyage AI", "cost": 2.00 },
+    { "name": "Jina Rerank", "provider": "Jina AI", "cost": 1.00 },
+    { "name": "Local BGE Reranker (Self-Hosted)", "provider": "Local", "cost": 0.00 }
+  ],
+  "vector_databases": [
+    {
+      "name": "Pinecone Serverless",
+      "provider": "Pinecone",
+      "pricing_type": "serverless",
+      "storage_cost": 0.25,
+      "read_cost": 8.00,
+      "write_cost": 2.00
+    },
+    {
+      "name": "Pinecone Pod-based (s1/p1)",
+      "provider": "Pinecone",
+      "pricing_type": "provisioned",
+      "node_rate": 0.096,
+      "min_nodes": 1
+    },
+    {
+      "name": "Qdrant Cloud Serverless",
+      "provider": "Qdrant",
+      "pricing_type": "serverless",
+      "storage_cost": 0.20,
+      "read_cost": 5.00,
+      "write_cost": 1.50
+    },
+    {
+      "name": "Weaviate Cloud Serverless",
+      "provider": "Weaviate",
+      "pricing_type": "serverless",
+      "storage_cost": 0.20,
+      "read_cost": 10.00,
+      "write_cost": 3.00
+    },
+    {
+      "name": "AWS RDS pgvector (db.t4g.medium)",
+      "provider": "Self-Hosted",
+      "pricing_type": "flat_monthly",
+      "flat_rate": 30.00
+    },
+    {
+      "name": "AWS RDS pgvector (db.r6g.xlarge)",
+      "provider": "Self-Hosted",
+      "pricing_type": "flat_monthly",
+      "flat_rate": 240.00
+    },
+    {
+      "name": "Azure AI Search (Basic)",
+      "provider": "Microsoft",
+      "pricing_type": "flat_monthly",
+      "flat_rate": 75.20
+    },
+    {
+      "name": "ElasticSearch (Self-Hosted)",
+      "provider": "Self-Hosted",
+      "pricing_type": "flat_monthly",
+      "flat_rate": 50.00
+    },
+    {
+      "name": "Milvus (Self-Hosted Cluster)",
+      "provider": "Self-Hosted",
+      "pricing_type": "flat_monthly",
+      "flat_rate": 100.00
+    }
+  ],
+  "exchanges": {
+    "USD_to_INR": 95.32
+  }
+}
