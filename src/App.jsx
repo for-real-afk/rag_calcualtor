@@ -3,6 +3,12 @@ import './App.css';
 import pricingCatalog from './pricing_catalog.json';
 import { DEFAULT_INPUTS, calculateTco } from './calculator.js';
 
+const BASE_DEFAULTS = {
+  ...DEFAULT_INPUTS,
+  monthlyActiveUsers: 10000,
+  avgQueriesPerUserMonth: 15
+};
+
 export default function App() {
   // 1. THEME STATE
   const [theme, setTheme] = useState(() => {
@@ -26,24 +32,35 @@ export default function App() {
         const base64Data = hash.substring(7);
         const jsonStr = atob(base64Data);
         const loaded = JSON.parse(jsonStr);
-        return { ...DEFAULT_INPUTS, ...loaded };
+        return { ...BASE_DEFAULTS, ...loaded };
       }
     } catch (e) {
       console.error("Failed to load state from hash:", e);
     }
     
-    return { 
-      ...DEFAULT_INPUTS,
-      monthlyActiveUsers: 10000,
-      avgQueriesPerUserMonth: 15
-    };
+    return BASE_DEFAULTS;
   });
 
   useEffect(() => {
     try {
-      const jsonStr = JSON.stringify(inputs);
+      const diff = {};
+      for (const key in inputs) {
+        if (inputs[key] !== BASE_DEFAULTS[key]) {
+          diff[key] = inputs[key];
+        }
+      }
+      
+      const jsonStr = JSON.stringify(diff);
       const base64Data = btoa(jsonStr);
-      window.location.hash = `state=${base64Data}`;
+      
+      if (Object.keys(diff).length === 0) {
+        // Clear hash cleanly if there are no overrides
+        if (window.location.hash) {
+          window.history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
+      } else {
+        window.location.hash = `state=${base64Data}`;
+      }
     } catch (e) {
       console.error("Failed to serialize state to hash:", e);
     }
